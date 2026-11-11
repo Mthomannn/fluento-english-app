@@ -27,3 +27,29 @@
 .list-row.locked{opacity:.68}
 .toast{background:var(--ink);border-radius:10px;bottom:24px;box-shadow:0 12px 30px rgba(23,32,31,.18);color:#fff;font-size:12px;left:50%;max-width:calc(100% - 40px);opacity:0;padding:13px 18px;pointer-events:none;position:fixed;transform:translate(-50%,20px);transition:opacity .2s,transform .2s;z-index:20}
 .toast.visible{opacity:1;transform:translate(-50%,0)}
+.back-link{color:var(--deep-green);display:inline-block;font-size:12px;margin:42px 0 24px;text-decoration:none}
+.back-link:hover{text-decoration:underline}
+.lesson-detail-hero{align-items:end;display:flex;justify-content:space-between;margin-bottom:28px}
+.lesson-detail-hero h1{font-family:"Space Grotesk";font-size:35px;letter-spacing:-1px;margin:0}
+.detail-status{background:#e2f3e5;border-radius:20px;color:var(--deep-green);font-size:11px;padding:9px 13px}
+.detail-grid{display:grid;gap:20px;grid-template-columns:minmax(0,1.5fr) minmax(260px,.75fr)}
+.detail-main,.study-plan-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px}
+.detail-main h2{font-family:"Space Grotesk";font-size:25px;line-height:1.25;margin:0 0 22px}
+.example-box{background:#f0f8f1;border-radius:12px;padding:20px}
+.example-box>span{color:#5d7967;font-size:10px;font-weight:700;letter-spacing:1.1px}
+.example-box strong{display:block;font-family:"Space Grotesk";font-size:20px;margin-top:12px}
+.example-box p{color:#718078;font-size:12px;margin:8px 0 13px}
+.audio-link,.link-button{background:transparent;color:var(--deep-green);font-size:11px;padding:0}
+.detail-section{margin-top:30px}
+.vocabulary-list{display:flex;flex-wrap:wrap;gap:10px}
+.vocabulary-chip{background:#f7f9f7;border:1px solid var(--line);border-radius:9px;display:flex;flex-direction:column;gap:4px;padding:11px 13px}
+.vocabulary-chip strong{font-size:12px}
+.vocabulary-chip small{color:#82908a;font-size:11px}
+.study-plan-card h3{font-family:"Space Grotesk";font-size:21px;margin:0}
+.study-plan-card ol{list-style:none;margin:23px 0;padding:0}
+.study-plan-card li{align-items:center;border-bottom:1px solid var(--line);display:flex;font-size:12px;gap:10px;padding:12px 0}
+.study-plan-card li span{align-items:center;background:#eef7ef;border-radius:50%;color:var(--deep-green);display:flex;font-size:9px;height:24px;justify-content:center;width:24px}
+.study-plan-card li small{color:#82908a;font-size:10px;margin-left:auto}
+.study-plan-card .primary-button{border:0;width:100%}
+.row-actions{align-items:center;display:flex;gap:15px}
+@media(max-width:800px){.lesson-detail-hero{align-items:start;display:block}.lesson-detail-hero h1{font-size:29px}.detail-status{display:inline-block;margin-top:15px}.detail-grid{grid-template-columns:1fr}.detail-main,.study-plan-card{padding:22px}.row-actions{gap:9px}}

@@ -2,19 +2,19 @@ const STORAGE_KEY = "fluento-progress-v1";
 
 const units = [
   {
-    title: "Alphabet & spelling", category: "COMUNICAÇÃO", objective: "Soletrar nomes, cidades e e-mails.", color: "green",
+    title: "Alphabet & spelling", category: "COMUNICAÇÃO", objective: "Soletrar nomes, cidades e e-mails.", summary: "Pergunte “How do you spell it?” e confirme letras parecidas.", example: "My last name is Costa. C-O-S-T-A.", translation: "Meu sobrenome é Costa. C-O-S-T-A.", vocabulary: [["alphabet", "alfabeto"], ["spell", "soletrar"], ["last name", "sobrenome"]], color: "green",
     questions: [{ title: "Complete: <em>How do you ___ your name?</em>", options: ["spell", "spells", "spelling", "spelled"], correct: 0, explanation: "Depois de “do you”, usamos a forma base: spell." }]
   },
   {
-    title: "Family & possessives", category: "GRAMÁTICA", objective: "Apresentar familiares usando my, your, his e her.", color: "yellow",
+    title: "Family & possessives", category: "GRAMÁTICA", objective: "Apresentar familiares usando my, your, his e her.", summary: "Use my, your, his e her para apresentar pessoas e falar de relações.", example: "This is my brother. His wife is a doctor.", translation: "Este é meu irmão. A esposa dele é médica.", vocabulary: [["mother", "mãe"], ["brother", "irmão"], ["wife", "esposa"]], color: "yellow",
     questions: [{ title: "<em>Her sister</em> significa:", options: ["irmã dele", "irmã dela", "irmã deles", "minha irmã"], correct: 1, explanation: "Her indica posse feminina: irmã dela." }]
   },
   {
-    title: "Jobs & work", category: "VOCABULÁRIO", objective: "Dizer profissão e local de trabalho.", color: "blue",
+    title: "Jobs & work", category: "VOCABULÁRIO", objective: "Dizer profissão e local de trabalho.", summary: "Aprenda a perguntar “What do you do?” e falar sobre profissões.", example: "What do you do? I’m an engineer.", translation: "O que você faz? Sou engenheira.", vocabulary: [["teacher", "professor(a)"], ["nurse", "enfermeiro(a)"], ["engineer", "engenheiro(a)"]], color: "blue",
     questions: [{ title: "Complete: <em>He is ___ doctor.</em>", options: ["a", "an", "the", "one"], correct: 0, explanation: "Doctor começa com som de consoante: a doctor." }]
   },
   {
-    title: "Home & location", category: "GRAMÁTICA", objective: "Descrever cômodos e localizar objetos.", color: "coral",
+    title: "Home & location", category: "GRAMÁTICA", objective: "Descrever cômodos e localizar objetos.", summary: "Use there is e there are para descrever sua casa e in, on e under para localizar objetos.", example: "There are two bedrooms and a small garden.", translation: "Há dois quartos e um jardim pequeno.", vocabulary: [["kitchen", "cozinha"], ["bedroom", "quarto"], ["garden", "jardim"]], color: "coral",
     questions: [
       { title: "Complete: <em>There ___ a table in the kitchen.</em>", options: ["are", "is", "be", "have"], correct: 1, explanation: "A table é singular, então usamos there is." },
       { title: "Complete: <em>The keys are ___ the table.</em>", options: ["on", "at", "to", "by"], correct: 0, explanation: "Usamos on quando algo está sobre uma superfície." },
@@ -22,19 +22,19 @@ const units = [
     ]
   },
   {
-    title: "Routine & simple present", category: "GRAMÁTICA", objective: "Falar de hábitos e horários.", color: "gray",
+    title: "Routine & simple present", category: "GRAMÁTICA", objective: "Falar de hábitos e horários.", summary: "Use a forma base com I, you, we e they; acrescente -s com he, she e it.", example: "I usually have breakfast at home.", translation: "Geralmente tomo café da manhã em casa.", vocabulary: [["wake up", "acordar"], ["work", "trabalhar"], ["breakfast", "café da manhã"]], color: "gray",
     questions: [{ title: "Complete: <em>He ___ English every day.</em>", options: ["study", "studies", "studying", "is study"], correct: 1, explanation: "Com he, study muda para studies no presente simples." }]
   },
   {
-    title: "Questions & polite requests", category: "COMUNICAÇÃO", objective: "Fazer perguntas e pedir ajuda com cortesia.", color: "green",
+    title: "Questions & polite requests", category: "COMUNICAÇÃO", objective: "Fazer perguntas e pedir ajuda com cortesia.", summary: "Use What, Where, When, Who e How para fazer perguntas e Could you para pedir ajuda.", example: "Excuse me, where is the nearest pharmacy?", translation: "Com licença, onde fica a farmácia mais próxima?", vocabulary: [["where is", "onde fica"], ["repeat", "repetir"], ["nearest", "mais próxima"]], color: "green",
     questions: [{ title: "Complete: <em>Where ___ the train station?</em>", options: ["are", "is", "do", "be"], correct: 1, explanation: "The train station é singular: Where is...?" }]
   },
   {
-    title: "Food & ordering", category: "SITUAÇÕES REAIS", objective: "Pedir alimentos e bebidas com educação.", color: "yellow",
+    title: "Food & ordering", category: "SITUAÇÕES REAIS", objective: "Pedir alimentos e bebidas com educação.", summary: "Use I’d like para pedir comida e bebida com naturalidade.", example: "I’d like a coffee without sugar and a sandwich.", translation: "Eu gostaria de um café sem açúcar e um sanduíche.", vocabulary: [["coffee", "café"], ["menu", "cardápio"], ["sandwich", "sanduíche"]], color: "yellow",
     questions: [{ title: "Complete: <em>I ___ like a tea.</em>", options: ["would", "am", "do", "can"], correct: 0, explanation: "I would like é uma forma educada de fazer um pedido." }]
   },
   {
-    title: "Directions & time", category: "SITUAÇÕES REAIS", objective: "Pedir direções e combinar horário e local.", color: "blue",
+    title: "Directions & time", category: "SITUAÇÕES REAIS", objective: "Pedir direções e combinar horário e local.", summary: "Aprenda Go straight, Turn left, next to e across from para se localizar.", example: "Go straight and turn right at the next street.", translation: "Siga em frente e vire à direita na próxima rua.", vocabulary: [["go straight", "siga em frente"], ["turn left", "vire à esquerda"], ["next to", "ao lado de"]], color: "blue",
     questions: [{ title: "Complete: <em>Turn ___ at the next street.</em>", options: ["left", "next", "between", "straight"], correct: 0, explanation: "Turn left significa vire à esquerda." }]
   }
 ];
@@ -54,6 +54,25 @@ const feedback = document.querySelector("#feedback");
 const nextButton = document.querySelector("#next-question");
 const listenButton = document.querySelector("#listen-example");
 const lessonList = document.querySelector("#lesson-list");
+let detailUnit = 3;
+
+function openLesson(index) {
+  if (index > 0 && !progress.completed.includes(index - 1)) {
+    showToast("Conclua a aula anterior para desbloquear esta unidade.");
+    return;
+  }
+  detailUnit = index;
+  const unit = units[index];
+  document.querySelector("#detail-category").textContent = `A1 ${index + 1} · ${unit.category}`;
+  document.querySelector("#detail-title").textContent = unit.title;
+  document.querySelector("#detail-objective").textContent = unit.objective;
+  document.querySelector("#detail-summary").textContent = unit.summary;
+  document.querySelector("#detail-example").textContent = unit.example;
+  document.querySelector("#detail-translation").textContent = unit.translation;
+  document.querySelector("#detail-status").textContent = progress.completed.includes(index) ? "Concluída" : "Disponível";
+  document.querySelector("#vocabulary-list").innerHTML = unit.vocabulary.map(([english, portuguese]) => `<span class="vocabulary-chip"><strong>${english}</strong><small>${portuguese}</small></span>`).join("");
+  showView("lesson-detail");
+}
 
 function loadProgress() {
   try { return { ...defaultProgress, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") }; }
@@ -85,7 +104,7 @@ function recordStudy(minutes = 5) {
 }
 
 function showView(name, updateUrl = true) {
-  const validName = ["home", "lessons", "practice", "progress"].includes(name) ? name : "home";
+  const validName = ["home", "lessons", "lesson-detail", "practice", "progress"].includes(name) ? name : "home";
   views.forEach((view) => view.classList.toggle("active-view", view.id === `${validName}-view`));
   navItems.forEach((item) => item.classList.toggle("active", item.dataset.view === validName));
   if (updateUrl && window.location.hash !== `#${validName}`) window.history.pushState({ view: validName }, "", `#${validName}`);
@@ -93,6 +112,12 @@ function showView(name, updateUrl = true) {
 }
 
 document.addEventListener("click", (event) => {
+  const openTarget = event.target.closest("[data-open-unit]");
+  if (openTarget) {
+    event.preventDefault();
+    openLesson(Number(openTarget.dataset.openUnit));
+    return;
+  }
   const target = event.target.closest("[data-view], [data-view-target]");
   if (target) {
     event.preventDefault();
@@ -101,6 +126,9 @@ document.addEventListener("click", (event) => {
     else showView(target.dataset.view || target.dataset.viewTarget);
   }
 });
+
+document.querySelector("#detail-practice").addEventListener("click", () => startUnit(detailUnit));
+document.querySelector("#detail-listen").addEventListener("click", () => speak(units[detailUnit].example, document.querySelector("#detail-listen")));
 
 document.addEventListener("keydown", (event) => {
   const card = event.target.closest(".lesson-card");
@@ -122,7 +150,7 @@ function renderLessons() {
     return `<article class="list-row ${done ? "done" : ""} ${locked ? "locked" : "current"}">
       <span class="list-icon ${unit.color}">${icon}</span>
       <div><span>A1 ${index + 1} · ${unit.category}</span><h3>${unit.title}</h3><small>${unit.objective}</small></div>
-      ${locked ? `<strong>${status}</strong>` : `<button class="small-button" data-start-unit="${index}" data-view-target="practice">${done ? "Revisar" : "Começar"}</button>`}
+      ${locked ? `<strong>${status}</strong>` : `<div class="row-actions"><button class="link-button" data-open-unit="${index}">Ver aula</button><button class="small-button" data-start-unit="${index}" data-view-target="practice">${done ? "Revisar" : "Praticar"}</button></div>`}
     </article>`;
   }).join("");
 }
@@ -209,7 +237,10 @@ nextButton.addEventListener("click", () => {
 });
 
 listenButton.addEventListener("click", () => {
-  const phrase = "There is a table in the kitchen.";
+  speak(units[currentUnit].example, listenButton);
+});
+
+function speak(phrase, button) {
   if (!("speechSynthesis" in window)) {
     feedback.textContent = "Seu navegador não oferece reprodução de áudio.";
     feedback.className = "feedback error";
@@ -219,10 +250,10 @@ listenButton.addEventListener("click", () => {
   const utterance = new SpeechSynthesisUtterance(phrase);
   utterance.lang = "en-US";
   utterance.rate = 0.85;
-  listenButton.textContent = "Reproduzindo...";
+  button.textContent = "Reproduzindo...";
   window.speechSynthesis.speak(utterance);
-  utterance.onend = () => { listenButton.textContent = "Ouvir exemplo"; };
-});
+  utterance.onend = () => { button.textContent = button.id === "detail-listen" ? "▶ Ouvir pronúncia" : "Ouvir exemplo"; };
+}
 
 function showToast(message) {
   const toast = document.querySelector("#toast");
