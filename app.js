@@ -1,6 +1,6 @@
 const STORAGE_KEY = "fluento-progress-v1";
 
-const units = [
+const fallbackUnits = [
   {
     title: "Alphabet & spelling", category: "COMUNICAÇÃO", objective: "Soletrar nomes, cidades e e-mails.", summary: "Pergunte “How do you spell it?” e confirme letras parecidas.", example: "My last name is Costa. C-O-S-T-A.", translation: "Meu sobrenome é Costa. C-O-S-T-A.", vocabulary: [["alphabet", "alfabeto"], ["spell", "soletrar"], ["last name", "sobrenome"]], color: "green",
     questions: [{ title: "Complete: <em>How do you ___ your name?</em>", options: ["spell", "spells", "spelling", "spelled"], correct: 0, explanation: "Depois de “do you”, usamos a forma base: spell." }, { title: "What does <em>last name</em> mean?", options: ["primeiro nome", "sobrenome", "apelido", "cidade"], correct: 1, explanation: "Last name significa sobrenome." }, { title: "Choose the correct phrase:", options: ["My first name is Costa.", "My last name is Costa.", "I live in Costa.", "Spell Costa please."], correct: 1, explanation: "A frase do currículo é: My last name is Costa." }]
@@ -40,6 +40,43 @@ const units = [
   }
 ];
 
+const sourceCurriculum = window.FLUENTO_CURRICULUM;
+const units = sourceCurriculum?.courseUnits?.length
+  ? sourceCurriculum.courseUnits.map((sourceUnit, index) => {
+      const vocabulary = sourceUnit.vocabulary || [];
+      const guidedPractice = sourceUnit.guidedPractice || [];
+      const generatedQuestions = vocabulary.slice(0, 2).map((item) => ({
+        title: `What does <em>${item.wordOrPhrase}</em> mean?`,
+        options: [item.translation, vocabulary[1]?.translation || "uma expressão", vocabulary[2]?.translation || "uma palavra", "nenhuma das opções"],
+        correct: 0,
+        explanation: `${item.wordOrPhrase} significa ${item.translation}.`
+      }));
+      const practiceQuestions = guidedPractice.map((item) => ({
+        title: item.prompt,
+        options: item.options,
+        correct: item.options.indexOf(item.answer),
+        explanation: item.explanation
+      }));
+      const firstExample = sourceUnit.examples?.[0] || {};
+      const listening = sourceUnit.listening?.[0] || {};
+      return {
+        title: sourceUnit.title.replace(/^A1 \d+ · /, ""),
+        category: vocabulary[0]?.category?.toUpperCase() || "INGLÊS A1",
+        objective: sourceUnit.objective,
+        summary: sourceUnit.lessonSummary,
+        example: firstExample.english || vocabulary[0]?.naturalSentence1 || "",
+        translation: firstExample.portuguese || vocabulary[0]?.naturalSentence1Tr || "",
+        vocabulary: vocabulary.slice(0, 6).map((item) => [item.wordOrPhrase, item.translation]),
+        listening: listening.text || firstExample.english || "",
+        listeningTranslation: listening.translation || firstExample.portuguese || "",
+        shadowing: listening.focus || "Repita a frase em voz alta, mantendo o ritmo natural.",
+        pronunciation: { name: "Foco de pronúncia", whatYouShouldDo: sourceUnit.pronunciationFocus || "Preste atenção ao ritmo e à ligação entre as palavras." },
+        questions: [...practiceQuestions, ...generatedQuestions].slice(0, 3),
+        color: ["green", "yellow", "blue", "coral"][index % 4]
+      };
+    })
+  : fallbackUnits;
+
 const defaultProgress = { completed: [], answered: 0, studyMinutes: 0, streak: 0, lastStudyDate: null };
 let progress = loadProgress();
 let currentUnit = 3;
@@ -73,6 +110,11 @@ function openLesson(index) {
   document.querySelector("#detail-summary").textContent = unit.summary;
   document.querySelector("#detail-example").textContent = unit.example;
   document.querySelector("#detail-translation").textContent = unit.translation;
+  document.querySelector("#detail-listening-text").textContent = unit.listening;
+  document.querySelector("#detail-listening-translation").textContent = unit.listeningTranslation;
+  document.querySelector("#detail-shadowing").textContent = unit.shadowing;
+  document.querySelector("#detail-pronunciation-title").textContent = unit.pronunciation?.name || "Pronúncia natural";
+  document.querySelector("#detail-pronunciation").textContent = typeof unit.pronunciation === "string" ? unit.pronunciation : unit.pronunciation?.whatYouShouldDo || "Repita devagar e depois aumente o ritmo.";
   document.querySelector("#detail-status").textContent = progress.completed.includes(index) ? "Concluída" : "Disponível";
   document.querySelector("#vocabulary-list").innerHTML = unit.vocabulary.map(([english, portuguese]) => `<span class="vocabulary-chip"><strong>${english}</strong><small>${portuguese}</small></span>`).join("");
   showView("lesson-detail");
@@ -132,7 +174,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.querySelector("#detail-practice").addEventListener("click", () => startUnit(detailUnit));
-document.querySelector("#detail-listen").addEventListener("click", () => speak(units[detailUnit].example, document.querySelector("#detail-listen")));
+document.querySelector("#detail-listen").addEventListener("click", () => speak(units[detailUnit].listening || units[detailUnit].example, document.querySelector("#detail-listen")));
 
 document.addEventListener("keydown", (event) => {
   const card = event.target.closest(".lesson-card");
@@ -177,6 +219,7 @@ function renderStats() {
   document.querySelector("#streak-value").textContent = progress.streak;
   document.querySelector("#study-time-value").textContent = progress.studyMinutes;
   document.querySelector("#completed-value").textContent = completed;
+  document.querySelector("#total-units-value").textContent = `/ ${units.length}`;
   document.querySelector("#completion-label").textContent = `${Math.round((completed / units.length) * 100)}% da trilha`;
 }
 
