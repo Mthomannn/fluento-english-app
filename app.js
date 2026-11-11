@@ -3,15 +3,15 @@ const STORAGE_KEY = "fluento-progress-v1";
 const units = [
   {
     title: "Alphabet & spelling", category: "COMUNICAÇÃO", objective: "Soletrar nomes, cidades e e-mails.", summary: "Pergunte “How do you spell it?” e confirme letras parecidas.", example: "My last name is Costa. C-O-S-T-A.", translation: "Meu sobrenome é Costa. C-O-S-T-A.", vocabulary: [["alphabet", "alfabeto"], ["spell", "soletrar"], ["last name", "sobrenome"]], color: "green",
-    questions: [{ title: "Complete: <em>How do you ___ your name?</em>", options: ["spell", "spells", "spelling", "spelled"], correct: 0, explanation: "Depois de “do you”, usamos a forma base: spell." }]
+    questions: [{ title: "Complete: <em>How do you ___ your name?</em>", options: ["spell", "spells", "spelling", "spelled"], correct: 0, explanation: "Depois de “do you”, usamos a forma base: spell." }, { title: "What does <em>last name</em> mean?", options: ["primeiro nome", "sobrenome", "apelido", "cidade"], correct: 1, explanation: "Last name significa sobrenome." }, { title: "Choose the correct phrase:", options: ["My first name is Costa.", "My last name is Costa.", "I live in Costa.", "Spell Costa please."], correct: 1, explanation: "A frase do currículo é: My last name is Costa." }]
   },
   {
     title: "Family & possessives", category: "GRAMÁTICA", objective: "Apresentar familiares usando my, your, his e her.", summary: "Use my, your, his e her para apresentar pessoas e falar de relações.", example: "This is my brother. His wife is a doctor.", translation: "Este é meu irmão. A esposa dele é médica.", vocabulary: [["mother", "mãe"], ["brother", "irmão"], ["wife", "esposa"]], color: "yellow",
-    questions: [{ title: "<em>Her sister</em> significa:", options: ["irmã dele", "irmã dela", "irmã deles", "minha irmã"], correct: 1, explanation: "Her indica posse feminina: irmã dela." }]
+    questions: [{ title: "<em>Her sister</em> significa:", options: ["irmã dele", "irmã dela", "irmã deles", "minha irmã"], correct: 1, explanation: "Her indica posse feminina: irmã dela." }, { title: "Complete: <em>This is ___ brother.</em>", options: ["my", "his", "her", "your"], correct: 0, explanation: "My significa meu ou minha." }, { title: "Choose the correct sentence:", options: ["His wife is a doctor.", "He wife is a doctor.", "Her wife is a doctor.", "Him wife is a doctor."], correct: 0, explanation: "His indica posse masculina: a esposa dele." }]
   },
   {
     title: "Jobs & work", category: "VOCABULÁRIO", objective: "Dizer profissão e local de trabalho.", summary: "Aprenda a perguntar “What do you do?” e falar sobre profissões.", example: "What do you do? I’m an engineer.", translation: "O que você faz? Sou engenheira.", vocabulary: [["teacher", "professor(a)"], ["nurse", "enfermeiro(a)"], ["engineer", "engenheiro(a)"]], color: "blue",
-    questions: [{ title: "Complete: <em>He is ___ doctor.</em>", options: ["a", "an", "the", "one"], correct: 0, explanation: "Doctor começa com som de consoante: a doctor." }]
+    questions: [{ title: "Complete: <em>He is ___ doctor.</em>", options: ["a", "an", "the", "one"], correct: 0, explanation: "Doctor começa com som de consoante: a doctor." }, { title: "Complete: <em>I’m ___ engineer.</em>", options: ["a", "an", "the", "one"], correct: 1, explanation: "Engineer começa com som de vogal: an engineer." }, { title: "Choose the translation for <em>nurse</em>:", options: ["professor", "enfermeiro(a)", "engenheiro", "médico"], correct: 1, explanation: "Nurse significa enfermeiro ou enfermeira." }]
   },
   {
     title: "Home & location", category: "GRAMÁTICA", objective: "Descrever cômodos e localizar objetos.", summary: "Use there is e there are para descrever sua casa e in, on e under para localizar objetos.", example: "There are two bedrooms and a small garden.", translation: "Há dois quartos e um jardim pequeno.", vocabulary: [["kitchen", "cozinha"], ["bedroom", "quarto"], ["garden", "jardim"]], color: "coral",
@@ -19,23 +19,24 @@ const units = [
       { title: "Complete: <em>There ___ a table in the kitchen.</em>", options: ["are", "is", "be", "have"], correct: 1, explanation: "A table é singular, então usamos there is." },
       { title: "Complete: <em>The keys are ___ the table.</em>", options: ["on", "at", "to", "by"], correct: 0, explanation: "Usamos on quando algo está sobre uma superfície." },
       { title: "Escolha a tradução de <em>bedroom</em>:", options: ["cozinha", "banheiro", "quarto", "sala"], correct: 2, explanation: "Bedroom significa quarto." }
+      , { title: "There are two bedrooms and a small <em>___</em>.", options: ["garden", "kitchen", "street", "table"], correct: 0, explanation: "Garden significa jardim." }
     ]
   },
   {
     title: "Routine & simple present", category: "GRAMÁTICA", objective: "Falar de hábitos e horários.", summary: "Use a forma base com I, you, we e they; acrescente -s com he, she e it.", example: "I usually have breakfast at home.", translation: "Geralmente tomo café da manhã em casa.", vocabulary: [["wake up", "acordar"], ["work", "trabalhar"], ["breakfast", "café da manhã"]], color: "gray",
-    questions: [{ title: "Complete: <em>He ___ English every day.</em>", options: ["study", "studies", "studying", "is study"], correct: 1, explanation: "Com he, study muda para studies no presente simples." }]
+    questions: [{ title: "Complete: <em>He ___ English every day.</em>", options: ["study", "studies", "studying", "is study"], correct: 1, explanation: "Com he, study muda para studies no presente simples." }, { title: "Choose the natural sentence:", options: ["I usually have breakfast at home.", "I usual breakfast have home.", "Usually I have breakfast in home.", "I have breakfast usually at the."], correct: 0, explanation: "Usually vem antes do verbo principal." }, { title: "Complete: <em>I ___ up at seven.</em>", options: ["wake", "wakes", "waking", "am wake"], correct: 0, explanation: "Com I, usamos a forma base: wake." }]
   },
   {
     title: "Questions & polite requests", category: "COMUNICAÇÃO", objective: "Fazer perguntas e pedir ajuda com cortesia.", summary: "Use What, Where, When, Who e How para fazer perguntas e Could you para pedir ajuda.", example: "Excuse me, where is the nearest pharmacy?", translation: "Com licença, onde fica a farmácia mais próxima?", vocabulary: [["where is", "onde fica"], ["repeat", "repetir"], ["nearest", "mais próxima"]], color: "green",
-    questions: [{ title: "Complete: <em>Where ___ the train station?</em>", options: ["are", "is", "do", "be"], correct: 1, explanation: "The train station é singular: Where is...?" }]
+    questions: [{ title: "Complete: <em>Where ___ the train station?</em>", options: ["are", "is", "do", "be"], correct: 1, explanation: "The train station é singular: Where is...?" }, { title: "Choose the polite request:", options: ["Repeat that.", "Could you repeat that, please?", "You repeat that.", "Repeating now."], correct: 1, explanation: "Could you... please? é uma forma educada de pedir." }, { title: "Complete: <em>Excuse me, ___ is the pharmacy?</em>", options: ["where", "what", "who", "when"], correct: 0, explanation: "Where pergunta localização." }]
   },
   {
     title: "Food & ordering", category: "SITUAÇÕES REAIS", objective: "Pedir alimentos e bebidas com educação.", summary: "Use I’d like para pedir comida e bebida com naturalidade.", example: "I’d like a coffee without sugar and a sandwich.", translation: "Eu gostaria de um café sem açúcar e um sanduíche.", vocabulary: [["coffee", "café"], ["menu", "cardápio"], ["sandwich", "sanduíche"]], color: "yellow",
-    questions: [{ title: "Complete: <em>I ___ like a tea.</em>", options: ["would", "am", "do", "can"], correct: 0, explanation: "I would like é uma forma educada de fazer um pedido." }]
+    questions: [{ title: "Complete: <em>I ___ like a tea.</em>", options: ["would", "am", "do", "can"], correct: 0, explanation: "I would like é uma forma educada de fazer um pedido." }, { title: "Choose the natural order:", options: ["I’d like a coffee, please.", "I like would coffee please.", "A coffee I would like.", "I’d a coffee like."], correct: 0, explanation: "I’d like + item + please é a estrutura natural." }, { title: "What does <em>menu</em> mean?", options: ["conta", "cardápio", "garçom", "cozinha"], correct: 1, explanation: "Menu significa cardápio." }]
   },
   {
     title: "Directions & time", category: "SITUAÇÕES REAIS", objective: "Pedir direções e combinar horário e local.", summary: "Aprenda Go straight, Turn left, next to e across from para se localizar.", example: "Go straight and turn right at the next street.", translation: "Siga em frente e vire à direita na próxima rua.", vocabulary: [["go straight", "siga em frente"], ["turn left", "vire à esquerda"], ["next to", "ao lado de"]], color: "blue",
-    questions: [{ title: "Complete: <em>Turn ___ at the next street.</em>", options: ["left", "next", "between", "straight"], correct: 0, explanation: "Turn left significa vire à esquerda." }]
+    questions: [{ title: "Complete: <em>Turn ___ at the next street.</em>", options: ["left", "next", "between", "straight"], correct: 0, explanation: "Turn left significa vire à esquerda." }, { title: "Complete: <em>Go ___ for two blocks.</em>", options: ["straight", "next", "left", "between"], correct: 0, explanation: "Go straight significa siga em frente." }, { title: "What does <em>next to</em> mean?", options: ["em frente", "ao lado de", "atrás de", "dentro de"], correct: 1, explanation: "Next to significa ao lado de." }]
   }
 ];
 
@@ -54,6 +55,9 @@ const feedback = document.querySelector("#feedback");
 const nextButton = document.querySelector("#next-question");
 const listenButton = document.querySelector("#listen-example");
 const lessonList = document.querySelector("#lesson-list");
+const completionPanel = document.querySelector("#completion-panel");
+const reviewLessonButton = document.querySelector("#review-lesson");
+const nextLessonButton = document.querySelector("#next-lesson");
 let detailUnit = 3;
 
 function openLesson(index) {
@@ -193,6 +197,7 @@ function renderQuestion() {
   questionAnswered = false;
   document.querySelector("#practice-eyebrow").textContent = `A1 ${currentUnit + 1} · ${unit.category}`;
   document.querySelector("#practice-title").textContent = unit.title;
+  document.querySelector("#practice-objective").textContent = unit.objective;
   questionTitle.innerHTML = question.title;
   questionCount.textContent = `Pergunta ${currentQuestion + 1} de ${unit.questions.length}`;
   document.querySelector("#quiz-progress").style.width = `${((currentQuestion + 1) / unit.questions.length) * 100}%`;
@@ -206,6 +211,8 @@ function renderQuestion() {
     answer.disabled = !question.options[index];
     answer.className = "answer";
   });
+  completionPanel.hidden = true;
+  document.querySelector(".quiz-card").hidden = false;
 }
 
 answers.forEach((answer) => answer.addEventListener("click", () => {
@@ -231,9 +238,24 @@ nextButton.addEventListener("click", () => {
   }
   if (!progress.completed.includes(currentUnit)) progress.completed.push(currentUnit);
   saveProgress();
+  document.querySelector(".quiz-card").hidden = true;
+  completionPanel.hidden = false;
   showToast(`${unit.title} concluída! Próxima aula desbloqueada.`);
+});
+
+reviewLessonButton.addEventListener("click", () => {
+  currentQuestion = 0;
   renderQuestion();
-  setTimeout(() => showView("lessons"), 650);
+});
+
+nextLessonButton.addEventListener("click", () => {
+  const next = currentUnit + 1;
+  if (next < units.length) {
+    openLesson(next);
+    startUnit(next);
+  } else {
+    showView("progress");
+  }
 });
 
 listenButton.addEventListener("click", () => {

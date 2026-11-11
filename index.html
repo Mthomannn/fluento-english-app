@@ -167,8 +167,10 @@
         </section>
 
         <section id="practice-view" class="view">
-          <div class="practice-header"><div><p id="practice-eyebrow" class="eyebrow">INGLÊS A1 · PRÁTICA GUIADA</p><h1 id="practice-title">Home, routine & questions</h1></div><span id="question-count" class="question-count">Pergunta 1 de 3</span></div>
+          <div class="practice-topbar"><a class="back-link compact" href="#lesson-detail" data-view-target="lesson-detail">← Voltar para a aula</a><a class="exit-link" href="#lessons" data-view-target="lessons">Sair da prática</a></div>
+          <div class="practice-header"><div><p id="practice-eyebrow" class="eyebrow">INGLÊS A1 · PRÁTICA GUIADA</p><h1 id="practice-title">Home, routine & questions</h1><p id="practice-objective" class="subtitle"></p></div><span id="question-count" class="question-count">Pergunta 1 de 3</span></div>
           <div class="quiz-card">
+            <div class="lesson-stepper"><span class="step active">1 <small>Aprender</small></span><i></i><span class="step active">2 <small>Praticar</small></span><i></i><span class="step">3 <small>Concluir</small></span></div>
             <div class="quiz-progress"><span id="quiz-progress"></span></div>
             <p class="quiz-label">ESCOLHA A ALTERNATIVA CORRETA</p>
             <h2 id="question-title">How do you say <em>“Eu acordo às 7”</em> in English?</h2>
@@ -184,9 +186,12 @@
               <button id="listen-example" class="secondary-button" type="button">Ouvir exemplo</button>
             </div>
             <div class="exercise-links">
-              <a href="#lessons" data-view-target="lessons">← Ver todas as aulas</a>
+              <a href="#lesson-detail" data-view-target="lesson-detail">← Revisar conteúdo</a>
               <a href="#progress" data-view-target="progress">Acompanhar meu progresso →</a>
             </div>
+          </div>
+          <div id="completion-panel" class="completion-panel" hidden>
+            <div class="completion-icon">✓</div><p class="eyebrow">AULA CONCLUÍDA</p><h2>Você avançou mais um passo.</h2><p>Revise o conteúdo ou continue para a próxima unidade quando estiver pronto.</p><div><button id="review-lesson" class="secondary-button" type="button">Revisar aula</button><button id="next-lesson" class="primary-button" type="button">Próxima aula <span>→</span></button></div>
           </div>
         </section>
 

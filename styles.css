@@ -52,4 +52,21 @@
 .study-plan-card li small{color:#82908a;font-size:10px;margin-left:auto}
 .study-plan-card .primary-button{border:0;width:100%}
 .row-actions{align-items:center;display:flex;gap:15px}
+.practice-topbar{align-items:center;display:flex;justify-content:space-between;margin-top:35px}
+.practice-topbar .back-link{margin:0}
+.exit-link{color:#82908a;font-size:12px;text-decoration:none}
+.exit-link:hover{color:var(--deep-green)}
+.back-link.compact{font-size:12px}
+.lesson-stepper{align-items:center;display:flex;gap:9px;margin-bottom:24px}
+.lesson-stepper .step{align-items:center;color:#a1ada7;display:flex;font-size:10px;font-weight:700;gap:5px}
+.lesson-stepper .step.active{color:var(--deep-green)}
+.lesson-stepper .step:not(:first-child){color:var(--deep-green)}
+.lesson-stepper .step small{font-size:10px;font-weight:500}
+.lesson-stepper i{background:#dce7df;height:1px;max-width:70px;width:100%}
+.completion-panel{background:#fff;border:1px solid var(--line);border-radius:16px;margin:20px auto 0;max-width:720px;padding:45px 30px;text-align:center}
+.completion-icon{align-items:center;background:#dcefe1;border-radius:50%;color:var(--deep-green);display:flex;font-size:30px;height:62px;justify-content:center;margin:0 auto 20px;width:62px}
+.completion-panel h2{font-family:"Space Grotesk";font-size:27px;margin:0}
+.completion-panel>p:not(.eyebrow){color:var(--muted);font-size:13px;margin:10px auto 25px;max-width:380px}
+.completion-panel .secondary-button,.completion-panel .primary-button{margin:0 4px}
+@media(max-width:800px){.practice-topbar{margin-top:20px}.lesson-stepper{justify-content:space-between}.lesson-stepper i{max-width:35px}.completion-panel .secondary-button,.completion-panel .primary-button{display:block;margin:10px auto;width:100%}}
 @media(max-width:800px){.lesson-detail-hero{align-items:start;display:block}.lesson-detail-hero h1{font-size:29px}.detail-status{display:inline-block;margin-top:15px}.detail-grid{grid-template-columns:1fr}.detail-main,.study-plan-card{padding:22px}.row-actions{gap:9px}}
