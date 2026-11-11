@@ -13,22 +13,22 @@ document.querySelectorAll("[data-view], [data-view-target]").forEach((element) =
 
 const questions = [
   {
-    title: "How do you say <em>“Eu acordo às 7”</em> in English?",
-    options: ["I wake up in 7.", "I wake up at 7.", "I waked up on 7.", "I get wake at 7."],
+    title: "Complete: <em>There ___ a table in the kitchen.</em>",
+    options: ["are", "is", "be", "have"],
     correct: 1,
-    explanation: "Usamos “at” para horários específicos."
+    explanation: "A table é singular, então usamos “there is”."
   },
   {
-    title: "Choose the correct sentence:",
-    options: ["I usually have breakfast at home.", "I usual have breakfast home.", "I have usually breakfast in home.", "Usually I breakfast have at home."],
+    title: "Complete: <em>He ___ English every day.</em>",
+    options: ["study", "studies", "studying", "is study"],
+    correct: 1,
+    explanation: "Com “he”, study muda para studies no presente simples."
+  },
+  {
+    title: "Complete: <em>I ___ like a tea.</em>",
+    options: ["would", "am", "do", "can"],
     correct: 0,
-    explanation: "“Usually” vem antes do verbo principal em frases afirmativas."
-  },
-  {
-    title: "Complete the sentence: <em>She ___ to work at 8.</em>",
-    options: ["go", "going", "goes", "is go"],
-    correct: 2,
-    explanation: "Com “she”, o verbo recebe “-es”: she goes."
+    explanation: "“I would like” é uma forma educada de fazer um pedido."
   }
 ];
 
