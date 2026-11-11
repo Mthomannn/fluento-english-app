@@ -85,7 +85,7 @@
               <h1>Bom dia, Marina <span class="wave">👋</span></h1>
               <p class="subtitle">Um pouco de inglês hoje faz uma grande diferença amanhã.</p>
             </div>
-            <div class="level-pill"><span class="level-dot"></span> Nível A2 · Básico</div>
+            <div class="level-pill"><span class="level-dot"></span> Nível A1 · Básico</div>
           </div>
 
           <div class="hero-grid">
@@ -97,8 +97,8 @@
               <h2>A1 5 · Routine<br /><em>and simple present</em></h2>
               <p>Fale de hábitos e horários usando o presente simples.</p>
               <a class="primary-button" href="#practice" data-view-target="practice">Continuar aula <span>→</span></a>
-              <div class="progress-track"><span style="width: 48%"></span></div>
-              <div class="progress-caption"><span>48% concluído</span><span>12 min restantes</span></div>
+              <div class="progress-track"><span id="continue-progress" style="width: 0%"></span></div>
+              <div class="progress-caption"><span id="continue-progress-label">0% concluído</span><span id="continue-time-label">45 min de aula</span></div>
               <div class="decorative-sun">✳</div>
             </article>
 
@@ -107,10 +107,10 @@
                 <span class="tag">META DIÁRIA</span>
                 <span class="check-mark">✓</span>
               </div>
-              <div class="daily-number">12 <small>/ 15 min</small></div>
-              <p>Você está quase lá! Complete mais 3 minutos para manter sua sequência.</p>
-              <div class="mini-progress"><span style="width: 80%"></span></div>
-              <span class="daily-message">Muito bem, continue!</span>
+              <div class="daily-number"><span id="daily-minutes">0</span> <small>/ 15 min</small></div>
+              <p id="daily-description">Complete uma atividade para começar sua meta de hoje.</p>
+              <div class="mini-progress"><span id="daily-progress" style="width: 0%"></span></div>
+              <span id="daily-message" class="daily-message">Você consegue!</span>
             </article>
           </div>
 
@@ -146,19 +146,13 @@
 
         <section id="lessons-view" class="view">
           <div class="page-heading"><p class="eyebrow">TRILHA DE APRENDIZADO</p><h1>Todas as aulas</h1><p class="subtitle">Aprenda no seu ritmo, um passo de cada vez.</p></div>
-          <div class="lesson-list">
-            <article class="list-row done"><span class="list-icon green">✓</span><div><span>A1 1 · COMUNICAÇÃO</span><h3>Alphabet & spelling</h3></div><strong>Concluída</strong></article>
-            <article class="list-row done"><span class="list-icon yellow">✓</span><div><span>A1 2 · GRAMÁTICA</span><h3>Family & possessives</h3></div><strong>Concluída</strong></article>
-            <article class="list-row done"><span class="list-icon blue">✓</span><div><span>A1 3 · VOCABULÁRIO</span><h3>Jobs & work</h3></div><strong>Concluída</strong></article>
-            <article class="list-row current"><span class="list-icon coral">04</span><div><span>A1 4 · GRAMÁTICA</span><h3>Home & location</h3></div><button class="small-button" data-view-target="practice">Começar</button></article>
-            <article class="list-row locked"><span class="list-icon gray">05</span><div><span>A1 5 · GRAMÁTICA</span><h3>Routine & simple present</h3></div><strong>Bloqueada</strong></article>
-          </div>
+          <div id="lesson-list" class="lesson-list"></div>
         </section>
 
         <section id="practice-view" class="view">
-          <div class="practice-header"><div><p class="eyebrow">INGLÊS A1 · PRÁTICA GUIADA</p><h1>Home, routine & questions</h1></div><span class="question-count">Pergunta 1 de 3</span></div>
+          <div class="practice-header"><div><p id="practice-eyebrow" class="eyebrow">INGLÊS A1 · PRÁTICA GUIADA</p><h1 id="practice-title">Home, routine & questions</h1></div><span id="question-count" class="question-count">Pergunta 1 de 3</span></div>
           <div class="quiz-card">
-            <div class="quiz-progress"><span></span></div>
+            <div class="quiz-progress"><span id="quiz-progress"></span></div>
             <p class="quiz-label">ESCOLHA A ALTERNATIVA CORRETA</p>
             <h2 id="question-title">How do you say <em>“Eu acordo às 7”</em> in English?</h2>
             <div class="answer-grid">
@@ -181,11 +175,12 @@
 
         <section id="progress-view" class="view">
           <div class="page-heading"><p class="eyebrow">VISÃO GERAL</p><h1>Seu progresso</h1><p class="subtitle">Pequenos hábitos constroem grandes resultados.</p></div>
-          <div class="stats-grid"><div class="stat-card"><span>Sequência atual</span><strong>7 <small>dias</small></strong><em>+2 esta semana</em></div><div class="stat-card"><span>Tempo estudado</span><strong>4h 32</strong><em>+48 min esta semana</em></div><div class="stat-card"><span>Aulas concluídas</span><strong>12 <small>/ 24</small></strong><em>50% da trilha</em></div></div>
+          <div class="stats-grid"><div class="stat-card"><span>Sequência atual</span><strong><span id="streak-value">0</span> <small>dias</small></strong><em>Comece hoje</em></div><div class="stat-card"><span>Tempo estudado</span><strong><span id="study-time-value">0</span> <small>min</small></strong><em>Atualizado agora</em></div><div class="stat-card"><span>Aulas concluídas</span><strong><span id="completed-value">0</span> <small>/ 8</small></strong><em id="completion-label">0% da trilha</em></div></div>
           <div class="chart-card"><div class="section-heading"><div><p class="eyebrow">ATIVIDADE</p><h2>Minutos estudados</h2></div><span class="chart-period">Esta semana⌄</span></div><div class="chart"><span class="bar" style="height: 38%" data-day="SEG"></span><span class="bar" style="height: 60%" data-day="TER"></span><span class="bar today" style="height: 82%" data-day="QUA"></span><span class="bar" style="height: 45%" data-day="QUI"></span><span class="bar" style="height: 25%" data-day="SEX"></span><span class="bar" style="height: 12%" data-day="SÁB"></span><span class="bar" style="height: 6%" data-day="DOM"></span></div></div>
         </section>
       </main>
     </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
   </body>
 </html>
