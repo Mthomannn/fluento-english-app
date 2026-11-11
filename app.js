@@ -1,15 +1,31 @@
 const views = document.querySelectorAll(".view");
 const navItems = document.querySelectorAll(".nav-item");
 
-function showView(name) {
+function showView(name, updateUrl = true) {
   views.forEach((view) => view.classList.toggle("active-view", view.id === `${name}-view`));
   navItems.forEach((item) => item.classList.toggle("active", item.dataset.view === name));
+  if (updateUrl && window.location.hash !== `#${name}`) {
+    window.history.pushState({ view: name }, "", `#${name}`);
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 document.querySelectorAll("[data-view], [data-view-target]").forEach((element) => {
-  element.addEventListener("click", () => showView(element.dataset.view || element.dataset.viewTarget));
+  element.addEventListener("click", (event) => {
+    const target = element.dataset.view || element.dataset.viewTarget;
+    if (element.tagName === "A") event.preventDefault();
+    showView(target);
+  });
 });
+
+document.querySelectorAll(".lesson-card").forEach((card) => {
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") showView(card.dataset.viewTarget);
+  });
+});
+
+window.addEventListener("popstate", () => showView(window.location.hash.slice(1) || "home", false));
+window.addEventListener("hashchange", () => showView(window.location.hash.slice(1) || "home", false));
 
 const questions = [
   {
@@ -38,6 +54,7 @@ const questionCount = document.querySelector(".question-count");
 const answers = document.querySelectorAll(".answer");
 const feedback = document.querySelector("#feedback");
 const nextButton = document.querySelector("#next-question");
+const listenButton = document.querySelector("#listen-example");
 
 function renderQuestion() {
   const question = questions[currentQuestion];
@@ -91,4 +108,21 @@ nextButton.addEventListener("click", () => {
   nextButton.disabled = true;
 });
 
+listenButton.addEventListener("click", () => {
+  const phrase = "There is a table in the kitchen.";
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(phrase);
+    utterance.lang = "en-US";
+    utterance.rate = 0.85;
+    window.speechSynthesis.speak(utterance);
+    listenButton.textContent = "Reproduzindo...";
+    utterance.onend = () => { listenButton.textContent = "Ouvir exemplo"; };
+  } else {
+    feedback.textContent = "Seu navegador não oferece reprodução de áudio.";
+    feedback.className = "feedback error";
+  }
+});
+
 renderQuestion();
+showView(window.location.hash.slice(1) || "home", false);

@@ -66,6 +66,19 @@
         </header>
 
         <section id="home-view" class="view active-view">
+          <section class="landing-banner">
+            <div>
+              <p class="eyebrow">FLUÊNCIA ACELERADA · INGLÊS A1</p>
+              <h2>Inglês para usar<br /><em>na vida real.</em></h2>
+              <p>Aprenda frases úteis, pratique situações do dia a dia e ganhe confiança para responder em até 5 segundos.</p>
+              <div class="banner-actions">
+                <a class="primary-button" href="#practice" data-view-target="practice">Começar agora <span>→</span></a>
+                <a class="secondary-button" href="#lessons" data-view-target="lessons">Explorar trilha</a>
+              </div>
+            </div>
+            <div class="banner-stat"><strong>80h</strong><span>de conteúdo A1<br />organizado para você</span></div>
+          </section>
+
           <div class="welcome-row">
             <div>
               <p class="eyebrow">QUARTA-FEIRA, 12 DE JUNHO</p>
@@ -83,7 +96,7 @@
               </div>
               <h2>A1 5 · Routine<br /><em>and simple present</em></h2>
               <p>Fale de hábitos e horários usando o presente simples.</p>
-              <button class="primary-button" data-view-target="practice">Continuar aula <span>→</span></button>
+              <a class="primary-button" href="#practice" data-view-target="practice">Continuar aula <span>→</span></a>
               <div class="progress-track"><span style="width: 48%"></span></div>
               <div class="progress-caption"><span>48% concluído</span><span>12 min restantes</span></div>
               <div class="decorative-sun">✳</div>
@@ -110,19 +123,19 @@
           </div>
 
           <div class="lesson-grid">
-            <article class="lesson-card lesson-green">
+            <article class="lesson-card lesson-green" data-view-target="lessons" tabindex="0">
               <div class="lesson-number">A1 1</div>
               <div class="lesson-icon">☀</div>
               <div class="lesson-info"><span>COMUNICAÇÃO</span><h3>Alphabet & spelling</h3><p>Como soletrar nomes</p></div>
               <span class="lesson-status complete">✓</span>
             </article>
-            <article class="lesson-card lesson-yellow">
+            <article class="lesson-card lesson-yellow" data-view-target="lessons" tabindex="0">
               <div class="lesson-number">A1 2</div>
               <div class="lesson-icon">☕</div>
               <div class="lesson-info"><span>GRAMÁTICA</span><h3>Family & possessives</h3><p>My, your, his e her</p></div>
               <span class="lesson-status complete">✓</span>
             </article>
-            <article class="lesson-card lesson-blue">
+            <article class="lesson-card lesson-blue" data-view-target="lessons" tabindex="0">
               <div class="lesson-number">A1 3</div>
               <div class="lesson-icon">◒</div>
               <div class="lesson-info"><span>VOCABULÁRIO</span><h3>Jobs & work</h3><p>Profissões e trabalho</p></div>
@@ -155,7 +168,14 @@
               <button class="answer"></button>
             </div>
             <p id="feedback" class="feedback" role="status"></p>
-            <button id="next-question" class="primary-button next-button" disabled>Continuar <span>→</span></button>
+            <div class="exercise-actions">
+              <button id="next-question" class="primary-button next-button" disabled>Continuar <span>→</span></button>
+              <button id="listen-example" class="secondary-button" type="button">Ouvir exemplo</button>
+            </div>
+            <div class="exercise-links">
+              <a href="#lessons" data-view-target="lessons">← Ver todas as aulas</a>
+              <a href="#progress" data-view-target="progress">Acompanhar meu progresso →</a>
+            </div>
           </div>
         </section>
 
