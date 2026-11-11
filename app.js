@@ -92,6 +92,9 @@ const feedback = document.querySelector("#feedback");
 const nextButton = document.querySelector("#next-question");
 const listenButton = document.querySelector("#listen-example");
 const lessonList = document.querySelector("#lesson-list");
+const lessonEmpty = document.querySelector("#lesson-empty");
+const lessonSearch = document.querySelector("#lesson-search");
+let lessonFilter = "all";
 const completionPanel = document.querySelector("#completion-panel");
 const reviewLessonButton = document.querySelector("#review-lesson");
 const nextLessonButton = document.querySelector("#next-lesson");
@@ -188,7 +191,14 @@ window.addEventListener("popstate", () => showView(window.location.hash.slice(1)
 window.addEventListener("hashchange", () => showView(window.location.hash.slice(1), false));
 
 function renderLessons() {
-  lessonList.innerHTML = units.map((unit, index) => {
+  const search = lessonSearch?.value.trim().toLocaleLowerCase("pt-BR") || "";
+  const filtered = units.map((unit, index) => ({ unit, index })).filter(({ unit, index }) => {
+    const done = progress.completed.includes(index);
+    const matchesFilter = lessonFilter === "all" || (lessonFilter === "concluida" ? done : !done);
+    const matchesSearch = !search || `${unit.title} ${unit.objective} ${unit.category}`.toLocaleLowerCase("pt-BR").includes(search);
+    return matchesFilter && matchesSearch;
+  });
+  lessonList.innerHTML = filtered.map(({ unit, index }) => {
     const done = progress.completed.includes(index);
     const locked = index > 0 && !progress.completed.includes(index - 1);
     const status = done ? "Concluída" : locked ? "Bloqueada" : "Disponível";
@@ -199,6 +209,7 @@ function renderLessons() {
       ${locked ? `<strong>${status}</strong>` : `<div class="row-actions"><button class="link-button" data-open-unit="${index}">Ver aula</button><button class="small-button" data-start-unit="${index}" data-view-target="practice">${done ? "Revisar" : "Praticar"}</button></div>`}
     </article>`;
   }).join("");
+  lessonEmpty.hidden = filtered.length !== 0;
 }
 
 function renderDashboard() {
@@ -221,6 +232,7 @@ function renderStats() {
   document.querySelector("#completed-value").textContent = completed;
   document.querySelector("#total-units-value").textContent = `/ ${units.length}`;
   document.querySelector("#completion-label").textContent = `${Math.round((completed / units.length) * 100)}% da trilha`;
+  document.querySelector("#streak-label").textContent = progress.streak ? "Continue praticando" : "Comece hoje";
 }
 
 function startUnit(index) {
@@ -326,6 +338,29 @@ function showToast(message) {
   toast.classList.add("visible");
   setTimeout(() => toast.classList.remove("visible"), 2800);
 }
+
+document.querySelector("#welcome-date").textContent = new Intl.DateTimeFormat("pt-BR", {
+  weekday: "long", day: "numeric", month: "long"
+}).format(new Date()).toUpperCase();
+
+lessonSearch?.addEventListener("input", renderLessons);
+document.querySelectorAll("#lesson-filters .filter").forEach((button) => {
+  button.addEventListener("click", () => {
+    lessonFilter = button.dataset.filter;
+    document.querySelectorAll("#lesson-filters .filter").forEach((item) => item.classList.toggle("active", item === button));
+    renderLessons();
+  });
+});
+
+document.querySelector("#reset-progress").addEventListener("click", () => {
+  if (!window.confirm("Resetar todo o seu progresso neste dispositivo?")) return;
+  progress = { ...defaultProgress };
+  try { localStorage.removeItem(STORAGE_KEY); } catch (error) { console.warn("Não foi possível limpar o progresso local.", error); }
+  renderDashboard();
+  renderLessons();
+  renderStats();
+  showToast("Progresso resetado.");
+});
 
 renderDashboard();
 renderLessons();

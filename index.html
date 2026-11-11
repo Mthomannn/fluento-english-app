@@ -81,7 +81,7 @@
 
           <div class="welcome-row">
             <div>
-              <p class="eyebrow">QUARTA-FEIRA, 12 DE JUNHO</p>
+              <p id="welcome-date" class="eyebrow">SEU PLANO DE ESTUDO</p>
               <h1>Bom dia, Marina <span class="wave">👋</span></h1>
               <p class="subtitle">Um pouco de inglês hoje faz uma grande diferença amanhã.</p>
             </div>
@@ -145,8 +145,9 @@
         </section>
 
         <section id="lessons-view" class="view">
-          <div class="page-heading"><p class="eyebrow">TRILHA DE APRENDIZADO</p><h1>Todas as aulas</h1><p class="subtitle">Aprenda no seu ritmo, um passo de cada vez.</p></div>
+          <div class="page-heading"><p class="eyebrow">TRILHA DE APRENDIZADO</p><h1>Todas as aulas</h1><p class="subtitle">Aprenda no seu ritmo, um passo de cada vez.</p><div class="lesson-tools"><label class="search-field"><span>⌕</span><input id="lesson-search" type="search" placeholder="Buscar aula ou tema" autocomplete="off"></label><div id="lesson-filters" class="filter-list"><button class="filter active" data-filter="all">Todas</button><button class="filter" data-filter="disponivel">Disponíveis</button><button class="filter" data-filter="concluida">Concluídas</button></div></div></div>
           <div id="lesson-list" class="lesson-list"></div>
+          <p id="lesson-empty" class="empty-state" hidden>Nenhuma aula corresponde à sua busca.</p>
         </section>
 
         <section id="lesson-detail-view" class="view">
@@ -199,11 +200,18 @@
 
         <section id="progress-view" class="view">
           <div class="page-heading"><p class="eyebrow">VISÃO GERAL</p><h1>Seu progresso</h1><p class="subtitle">Pequenos hábitos constroem grandes resultados.</p></div>
-          <div class="stats-grid"><div class="stat-card"><span>Sequência atual</span><strong><span id="streak-value">0</span> <small>dias</small></strong><em>Comece hoje</em></div><div class="stat-card"><span>Tempo estudado</span><strong><span id="study-time-value">0</span> <small>min</small></strong><em>Atualizado agora</em></div><div class="stat-card"><span>Aulas concluídas</span><strong><span id="completed-value">0</span> <small id="total-units-value">/ 15</small></strong><em id="completion-label">0% da trilha</em></div></div>
+          <div class="stats-grid"><div class="stat-card"><span>Sequência atual</span><strong><span id="streak-value">0</span> <small>dias</small></strong><em id="streak-label">Comece hoje</em></div><div class="stat-card"><span>Tempo estudado</span><strong><span id="study-time-value">0</span> <small>min</small></strong><em>Atualizado neste dispositivo</em></div><div class="stat-card"><span>Aulas concluídas</span><strong><span id="completed-value">0</span> <small id="total-units-value">/ 15</small></strong><em id="completion-label">0% da trilha</em></div></div>
+          <div class="progress-actions"><p>Seu progresso fica salvo neste dispositivo.</p><button id="reset-progress" class="danger-link" type="button">Resetar progresso</button></div>
           <div class="chart-card"><div class="section-heading"><div><p class="eyebrow">ATIVIDADE</p><h2>Minutos estudados</h2></div><span class="chart-period">Esta semana⌄</span></div><div class="chart"><span class="bar" style="height: 38%" data-day="SEG"></span><span class="bar" style="height: 60%" data-day="TER"></span><span class="bar today" style="height: 82%" data-day="QUA"></span><span class="bar" style="height: 45%" data-day="QUI"></span><span class="bar" style="height: 25%" data-day="SEX"></span><span class="bar" style="height: 12%" data-day="SÁB"></span><span class="bar" style="height: 6%" data-day="DOM"></span></div></div>
         </section>
       </main>
     </div>
+    <nav class="mobile-nav" aria-label="Navegação mobile">
+      <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span><small>Início</small></button>
+      <button class="nav-item" data-view="lessons"><span class="nav-icon">▣</span><small>Aulas</small></button>
+      <button class="nav-item" data-view="practice"><span class="nav-icon">✦</span><small>Praticar</small></button>
+      <button class="nav-item" data-view="progress"><span class="nav-icon">↗</span><small>Progresso</small></button>
+    </nav>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="curriculum-data.js"></script>
     <script src="app.js"></script>
