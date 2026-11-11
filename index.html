@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fluento, seu app simples e prático para aprender inglês." />
+    <title>Fluento — Aprenda inglês todos os dias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <div class="brand">
+          <span class="brand-mark">F</span>
+          <span>fluento</span>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="home">
+            <span class="nav-icon">⌂</span>
+            Início
+          </button>
+          <button class="nav-item" data-view="lessons">
+            <span class="nav-icon">▣</span>
+            Aulas
+          </button>
+          <button class="nav-item" data-view="practice">
+            <span class="nav-icon">✦</span>
+            Praticar
+          </button>
+          <button class="nav-item" data-view="progress">
+            <span class="nav-icon">↗</span>
+            Meu progresso
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="streak-card">
+            <span class="streak-flame">♨</span>
+            <div>
+              <strong>7 dias seguidos</strong>
+              <small>Continue assim!</small>
+            </div>
+          </div>
+          <button class="profile-button">
+            <span class="avatar">MA</span>
+            <span class="profile-name">Marina Alves</span>
+            <span class="profile-chevron">⌄</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark">F</span> flu ento</div>
+          <div class="header-actions">
+            <button class="icon-button" aria-label="Notificações">♢<span class="notification-dot"></span></button>
+            <button class="help-button">?</button>
+          </div>
+        </header>
+
+        <section id="home-view" class="view active-view">
+          <div class="welcome-row">
+            <div>
+              <p class="eyebrow">QUARTA-FEIRA, 12 DE JUNHO</p>
+              <h1>Bom dia, Marina <span class="wave">👋</span></h1>
+              <p class="subtitle">Um pouco de inglês hoje faz uma grande diferença amanhã.</p>
+            </div>
+            <div class="level-pill"><span class="level-dot"></span> Nível A2 · Básico</div>
+          </div>
+
+          <div class="hero-grid">
+            <article class="continue-card">
+              <div class="card-heading">
+                <span class="tag">CONTINUE DE ONDE PAROU</span>
+                <span class="lesson-count">AULA 4 DE 8</span>
+              </div>
+              <h2>Talking about<br /><em>your routine</em></h2>
+              <p>Aprenda a falar sobre seus hábitos e o seu dia a dia em inglês.</p>
+              <button class="primary-button" data-view-target="practice">Continuar aula <span>→</span></button>
+              <div class="progress-track"><span style="width: 48%"></span></div>
+              <div class="progress-caption"><span>48% concluído</span><span>12 min restantes</span></div>
+              <div class="decorative-sun">✳</div>
+            </article>
+
+            <article class="daily-card">
+              <div class="daily-top">
+                <span class="tag">META DIÁRIA</span>
+                <span class="check-mark">✓</span>
+              </div>
+              <div class="daily-number">12 <small>/ 15 min</small></div>
+              <p>Você está quase lá! Complete mais 3 minutos para manter sua sequência.</p>
+              <div class="mini-progress"><span style="width: 80%"></span></div>
+              <span class="daily-message">Muito bem, continue!</span>
+            </article>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SUA JORNADA</p>
+              <h2>Continue aprendendo</h2>
+            </div>
+            <button class="text-button" data-view-target="lessons">Ver todas as aulas <span>→</span></button>
+          </div>
+
+          <div class="lesson-grid">
+            <article class="lesson-card lesson-green">
+              <div class="lesson-number">01</div>
+              <div class="lesson-icon">☀</div>
+              <div class="lesson-info"><span>VOCABULÁRIO</span><h3>Everyday life</h3><p>18 palavras novas</p></div>
+              <span class="lesson-status complete">✓</span>
+            </article>
+            <article class="lesson-card lesson-yellow">
+              <div class="lesson-number">02</div>
+              <div class="lesson-icon">☕</div>
+              <div class="lesson-info"><span>CONVERSAÇÃO</span><h3>At the café</h3><p>Diálogo prático</p></div>
+              <span class="lesson-status complete">✓</span>
+            </article>
+            <article class="lesson-card lesson-blue">
+              <div class="lesson-number">03</div>
+              <div class="lesson-icon">◒</div>
+              <div class="lesson-info"><span>GRAMÁTICA</span><h3>Simple present</h3><p>8 exercícios</p></div>
+              <span class="lesson-status complete">✓</span>
+            </article>
+          </div>
+        </section>
+
+        <section id="lessons-view" class="view">
+          <div class="page-heading"><p class="eyebrow">TRILHA DE APRENDIZADO</p><h1>Todas as aulas</h1><p class="subtitle">Aprenda no seu ritmo, um passo de cada vez.</p></div>
+          <div class="lesson-list">
+            <article class="list-row done"><span class="list-icon green">✓</span><div><span>UNIDADE 01 · VOCABULÁRIO</span><h3>Everyday life</h3></div><strong>Concluída</strong></article>
+            <article class="list-row done"><span class="list-icon yellow">✓</span><div><span>UNIDADE 02 · CONVERSAÇÃO</span><h3>At the café</h3></div><strong>Concluída</strong></article>
+            <article class="list-row done"><span class="list-icon blue">✓</span><div><span>UNIDADE 03 · GRAMÁTICA</span><h3>Simple present</h3></div><strong>Concluída</strong></article>
+            <article class="list-row current"><span class="list-icon coral">04</span><div><span>UNIDADE 04 · CONVERSAÇÃO</span><h3>Talking about your routine</h3></div><button class="small-button" data-view-target="practice">Começar</button></article>
+            <article class="list-row locked"><span class="list-icon gray">05</span><div><span>UNIDADE 05 · VOCABULÁRIO</span><h3>Travel essentials</h3></div><strong>Bloqueada</strong></article>
+          </div>
+        </section>
+
+        <section id="practice-view" class="view">
+          <div class="practice-header"><div><p class="eyebrow">UNIDADE 04 · CONVERSAÇÃO</p><h1>Talking about your routine</h1></div><span class="question-count">Pergunta 1 de 3</span></div>
+          <div class="quiz-card">
+            <div class="quiz-progress"><span></span></div>
+            <p class="quiz-label">ESCOLHA A ALTERNATIVA CORRETA</p>
+            <h2>How do you say <em>“Eu acordo às 7”</em> in English?</h2>
+            <div class="answer-grid">
+              <button class="answer" data-correct="false">I wake up in 7.</button>
+              <button class="answer" data-correct="true">I wake up at 7.</button>
+              <button class="answer" data-correct="false">I waked up on 7.</button>
+              <button class="answer" data-correct="false">I get wake at 7.</button>
+            </div>
+            <p id="feedback" class="feedback" role="status"></p>
+            <button id="next-question" class="primary-button next-button" disabled>Continuar <span>→</span></button>
+          </div>
+        </section>
+
+        <section id="progress-view" class="view">
+          <div class="page-heading"><p class="eyebrow">VISÃO GERAL</p><h1>Seu progresso</h1><p class="subtitle">Pequenos hábitos constroem grandes resultados.</p></div>
+          <div class="stats-grid"><div class="stat-card"><span>Sequência atual</span><strong>7 <small>dias</small></strong><em>+2 esta semana</em></div><div class="stat-card"><span>Tempo estudado</span><strong>4h 32</strong><em>+48 min esta semana</em></div><div class="stat-card"><span>Aulas concluídas</span><strong>12 <small>/ 24</small></strong><em>50% da trilha</em></div></div>
+          <div class="chart-card"><div class="section-heading"><div><p class="eyebrow">ATIVIDADE</p><h2>Minutos estudados</h2></div><span class="chart-period">Esta semana⌄</span></div><div class="chart"><span class="bar" style="height: 38%" data-day="SEG"></span><span class="bar" style="height: 60%" data-day="TER"></span><span class="bar today" style="height: 82%" data-day="QUA"></span><span class="bar" style="height: 45%" data-day="QUI"></span><span class="bar" style="height: 25%" data-day="SEX"></span><span class="bar" style="height: 12%" data-day="SÁB"></span><span class="bar" style="height: 6%" data-day="DOM"></span></div></div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
